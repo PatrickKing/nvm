@@ -445,8 +445,8 @@ cdnvm(){
         declare nvm_version
         nvm_version=$(<"$nvm_path"/.nvmrc)
 
-        # Add the `v` suffix if it does not exists in the .nvmrc file
-        if [[ $nvm_version != v* ]]; then
+        # If .nvmrc does not specify an lts version, add the `v` suffix if it does not exists in the file
+        if [[ $nvm_version != lts/* && $nvm_version != v* ]]; then
             nvm_version="v""$nvm_version"
         fi
 
